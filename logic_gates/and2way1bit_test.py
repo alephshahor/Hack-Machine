@@ -3,6 +3,7 @@ from and2way1bit import And2Way1Bit
 
 test_input = [[0,0], [0,1], [1,0], [1,1]]
 test_output = [0, 0, 0, 1]
+
 and2Way1Bit = And2Way1Bit()
 
 for i in range(len(test_input)):

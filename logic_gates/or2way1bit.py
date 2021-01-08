@@ -1,3 +1,4 @@
+
 class Or2Way1Bit:
 
     def compute(self, a, b):
