@@ -1,11 +1,13 @@
 import sys
 from and2way1bit import And2Way1Bit
 
-test_input = [[0,0,0], [0,1,0], [1,0,0], [1,1,1]]
+test_input = [[0,0], [0,1], [1,0], [1,1]]
+test_output = [0, 0, 0, 1]
 and2Way1Bit = And2Way1Bit()
 
-for t_input in test_input:
-    result = and2Way1Bit.compute(t_input[0], t_input[1])
-    if result != t_input[2]:
-        sys.exit('Error, the inputs {} - {}  should output: {}'.format(t_input[0], t_input[1], t_input[2]))
+for i in range(len(test_input)):
+    result = and2Way1Bit.compute(test_input[i])
+    if result != test_output[i]:
+        sys.exit('Error, the input {} should output: {} but got: {}'.format(t_input[i], t_output[i], result))
+
 print("Test for And2Way1bit passed successfully.")
