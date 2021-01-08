@@ -8,5 +8,5 @@ not1Way1Bit = Not1Way1Bit()
 for i in range(len(test_input)):
     result = not1Way1Bit.compute(test_input[i])
     if result != test_output[i]:
-        sys.exit('Error, the input {} should output: {} but got: {}'.format(test_input[i], test_output[i], result))
+        sys.exit('Error, in[{}] should output: [{}] but got: [{}]'.format(test_input[i], test_output[i], result))
 print("Test for Not1Way1Bit passed successfully.")
