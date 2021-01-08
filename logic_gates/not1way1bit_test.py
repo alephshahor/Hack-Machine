@@ -1,7 +1,7 @@
 import sys
 from not1way1bit import Not1Way1Bit
 
-test_input = [[0],[1]]
+test_input = [0,1]
 test_output = [1,0]
 not1Way1Bit = Not1Way1Bit()
 
