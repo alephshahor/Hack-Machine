@@ -11,4 +11,4 @@ for i in range(len(test_input)):
     if result != test_output[i]:
         sys.exit('Error, sel[{}], in[{}] should output: {} but got: {}'
            .format(test_input[i][0], test_input[i][1], test_output[i], result))
-print("Test for Dmux2Way1Bit passed successfully.")
+print("Test for Dmux2Way1 passed successfully.")
