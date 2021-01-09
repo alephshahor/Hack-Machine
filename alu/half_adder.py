@@ -11,7 +11,7 @@ class HalfAdder:
         xor2Way1Bit = Xor2Way1Bit()
         and2Way1Bit = And2Way1Bit()
 
-        xor_out = xor2Way1Bit.compute(a,b)
-        and_out = and2Way1Bit.compute(a,b)
+        sum = xor2Way1Bit.compute(a,b)
+        carry = and2Way1Bit.compute(a,b)
 
-        return xor_out, and_out
+        return sum, carry
