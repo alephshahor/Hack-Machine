@@ -15,4 +15,4 @@ for i in range(len(test_input)):
     if result != test_output[i]:
         sys.exit('Error, sel{}, in{} should output: {} but got: {}'
            .format(test_sel[i], test_input[i], test_output[i], result))
-print("Test for Dmux4Way passed successfully.")
+print("Test for Dmux4Way16Bit passed successfully.")
