@@ -5,6 +5,12 @@ class Register16Bit:
     def __init__(self):
         self.bits = [Bit() for i in range(16)]
 
+    def print_register(self):
+        bits = []
+        for bit in self.bits:
+            bits.append(bit.dff.internal_state)
+        print(bits)
+
     def compute(self, _in, load):
 
         assert len(_in) == 16
