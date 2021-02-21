@@ -1,4 +1,4 @@
-from dmux2way1bit import DMux2Way1Bit
+from hack_machine.logic_gates.dmux2way1bit import DMux2Way1Bit
 
 class DMux4Way1Bit:
 
