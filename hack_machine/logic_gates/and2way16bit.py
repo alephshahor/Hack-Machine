@@ -1,4 +1,4 @@
-from and2way1bit import And2Way1Bit
+from hack_machine.logic_gates.and2way1bit import And2Way1Bit
 
 class And2Way16Bit:
     def compute(self, a, b):
