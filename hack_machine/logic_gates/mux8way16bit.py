@@ -1,5 +1,5 @@
-from mux4way16bit import Mux4Way16Bit
-from mux2way16bit import Mux2Way16Bit
+from hack_machine.logic_gates.mux4way16bit import Mux4Way16Bit
+from hack_machine.logic_gates.mux2way16bit import Mux2Way16Bit
 
 class Mux8Way16Bit:
 
