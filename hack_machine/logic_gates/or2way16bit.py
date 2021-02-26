@@ -1,4 +1,4 @@
-from or2way1bit import Or2Way1Bit
+from hack_machine.logic_gates.or2way1bit import Or2Way1Bit
 
 class Or2Way16Bit:
 
