@@ -21,18 +21,21 @@ def test_mux2way16bit():
         b_bin = conversions.dec_to_bin_arr(n_bit, b_dec)
 
         result = mux2Way16Bit.compute(sel, a_bin, b_bin)
+        result_dec = conversions.bin_arr_to_dec(result)
 
         if sel == 0:
             expected_out = a_bin
-            assert result == expected_out, 'Error, the input sel{}, a{}, b{} should output: {} but instead got: {}'.format(sel,
-                                                                                                                         a_bin,
-                                                                                                                         b_bin,
-                                                                                                                         expected_out,
-                                                                                                                         result)
+            expected_out_dec = conversions.bin_arr_to_dec(expected_out)
+            assert result == expected_out, 'Error, the input sel: {}, a: {}, b: {} should output: {} but instead got: {}'.format(sel,
+                                                                                                                         a_dec,
+                                                                                                                         b_dec,
+                                                                                                                         expected_out_dec,
+                                                                                                                         result_dec)
         else:
             expected_out = b_bin
-            assert result == expected_out, 'Error, the input sel{}, a{}, b{} should output: {} but instead got: {}'.format(sel,
-                                                                                                                         a_bin,
-                                                                                                                         b_bin,
-                                                                                                                         expected_out,
-                                                                                                                         result)
+            expected_out_dec = conversions.bin_arr_to_dec(expected_out)
+            assert result == expected_out, 'Error, the input sel: {}, a: {}, b: {} should output: {} but instead got: {}'.format(sel,
+                                                                                                                         a_dec,
+                                                                                                                         b_dec,
+                                                                                                                         expected_out_dec,
+                                                                                                                         result_dec)
