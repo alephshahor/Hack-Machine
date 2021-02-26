@@ -1,4 +1,4 @@
-from not1way1bit import Not1Way1Bit
+from hack_machine.logic_gates.not1way1bit import Not1Way1Bit
 
 class Not1Way16Bit:
 
