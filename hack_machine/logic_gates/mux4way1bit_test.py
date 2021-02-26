@@ -11,7 +11,7 @@ mux4Way16Bit = Mux4Way16Bit()
 
 
 def test_mux4way16bit():
-    for i in range(400):
+    for i in range(n_iterations):
 
         sel = [randrange(2), randrange(2)]
         sel_dec = conversions.bin_arr_to_dec(sel)
