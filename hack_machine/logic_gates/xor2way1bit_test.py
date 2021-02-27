@@ -1,14 +1,18 @@
-import sys
-from xor2way1bit import Xor2Way1Bit
+import pytest
+from hack_machine.logic_gates.xor2way1bit import Xor2Way1Bit
 
-test_input = [[0,0], [0,1], [1,0], [1,1]]
-test_output = [0,1,1,0]
+a = [0, 0, 1, 1]
+b = [0, 1, 0, 1]
+
+output = [0, 1, 1, 0]
 
 xor2Way1Bit = Xor2Way1Bit()
 
-for i in range(len(test_input)):
-    result = xor2Way1Bit.compute(test_input[i][0], test_input[i][1])
-    if result != test_output[i]:
-        sys.exit('Error, a[{}], b[{}]  should output: [{}] but got [{}]'
-           .format(test_input[i][0], test_input[i][1], test_output[i], result))
-print("Test for Xor2Way1Bit passed successfully.")
+
+def test_xor2way1bit():
+    for i in range(len(a)):
+        result = xor2Way1Bit.compute(a[i], b[i])
+        assert result == output[i], 'Error, a: {}, b: {}  should output: {} but got: {}'.format(a[i],
+                                                                                                b[i],
+                                                                                                output[i],
+                                                                                                result)
