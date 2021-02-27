@@ -1,10 +1,11 @@
 import sys
+import os
 from dff import DFF
-'''
-sys.path.append('../logic_gates')
+
+sys.path.append(os.environ['ROOT_FOLDER'] + '/logic_gates')
+
 from mux2way1bit import Mux2Way1Bit
 from mux2way1bit import Mux2Way1Bit
-'''
 
 class Bit:
 
@@ -14,6 +15,6 @@ class Bit:
 
     def compute(self, _in, load):
 
-        mux2Way1Bit = logic_gates.Mux2Way1Bit()
+        mux2Way1Bit = Mux2Way1Bit()
         dff_input = mux2Way1Bit.compute(load, self.dff.internal_state, _in)
         return self.dff.compute(dff_input)
