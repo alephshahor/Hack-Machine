@@ -1,8 +1,5 @@
 import pytest
-import sys
-import os
 
-sys.path.append(os.environ['ROOT_FOLDER'] + '/memory')
 from bit import Bit
 
 test_input = [1, 0, 0, 0, 0]

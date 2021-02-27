@@ -3,7 +3,6 @@ import os
 from dff import DFF
 
 sys.path.append(os.environ['ROOT_FOLDER'] + '/logic_gates')
-
 from mux2way1bit import Mux2Way1Bit
 
 class Bit:
