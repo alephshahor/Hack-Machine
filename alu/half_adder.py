@@ -1,6 +1,7 @@
 import sys
+import os
 
-sys.path.append('../logic_gates')
+sys.path.append(os.environ['ROOT_FOLDER'] + '/logic_gates')
 from xor2way1bit import Xor2Way1Bit
 from and2way1bit import And2Way1Bit
 
