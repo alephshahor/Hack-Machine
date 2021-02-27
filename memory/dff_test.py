@@ -1,8 +1,10 @@
 import sys
 import os
+
+
+sys.path.append(os.environ['ROOT_FOLDER'] + '/memory')
 from dff import DFF
 
-sys.path.append(os.environ['ROOT_FOLDER'] + '/logic_gates')
 
 test_input = [0, 1, 0, 1]
 test_output = [0, 0, 1, 0]
