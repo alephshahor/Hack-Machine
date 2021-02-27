@@ -1,9 +1,13 @@
 import sys
-sys.path.append('../logic_gates')
+import os
 
+sys.path.append(os.environ['ROOT_FOLDER'] + '/logic_gates')
 from mux2way16bit import Mux2Way16Bit
 from not1way16bit import Not1Way16Bit
+
+sys.path.append(os.environ['ROOT_FOLDER'] + '/memory')
 from add16bit import Add16Bit
+
 from and2way16bit import And2Way16Bit
 
 
