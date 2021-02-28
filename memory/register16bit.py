@@ -5,6 +5,10 @@ class Register16Bit:
     def __init__(self):
         self.bits = [Bit() for i in range(16)]
 
+
+    def value(self):
+        return [bit.value() for bit in self.bits]
+
     def print_register(self):
         bits = []
         for bit in self.bits:
