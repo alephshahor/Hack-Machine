@@ -11,6 +11,10 @@ class Bit:
 
         self.dff = DFF()
 
+    def value(self):
+
+        return self.dff.internal_state
+
     def compute(self, _in, load):
 
         mux2Way1Bit = Mux2Way1Bit()
