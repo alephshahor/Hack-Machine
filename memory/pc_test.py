@@ -31,3 +31,17 @@ def test_pc():
     result = pc.compute(_in, inc=0, load=0, reset=0)
     assert result == zero[:15] + [1], 'Error, expected {} but got {}'.format((zero[:15] + 1), result)
 
+def test_pc_2():
+
+    _in = zero
+    result = pc.compute(_in, inc=0, load=0, reset=1)
+
+    _in = conversions.dec_to_bin_arr(16, 6)
+    result = pc.compute(_in, inc=0, load=1, reset=0)
+    assert result == zero
+
+    result = pc.compute(_in, inc=1, load=0, reset=0)
+    assert result == _in
+
+    result = pc.compute(_in, inc=1, load=0, reset=0)
+    assert result == conversions.dec_to_bin_arr(16, 7)
