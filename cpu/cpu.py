@@ -36,14 +36,14 @@ class CPU:
         self.d_out = zero
         self.alu_out = zero
         self.jump_decoder_out = 0 # Lo puedes quitar de aqui creo
-        self.load_pc = 0
+        # self.load_pc = 0
         self.a_or_c_instr_mux = Mux2Way16Bit()
         self.load_a_mux = Mux2Way1Bit()
         self.a_or_m_mux = Mux2Way16Bit()
         self.load_d_mux = Mux2Way1Bit()
         self.load_jump_mux = Mux2Way1Bit()
 
-    def compute(self, instr, mem_in, reset):
+    def compute(self, instr, mem_in):
         
         x, a, c1, c2, c3, c4, c5, c6, d1, d2, d3, j1, j2, j3 = self.decoder.compute(instr)
 
@@ -55,11 +55,12 @@ class CPU:
         self.alu_out = self.alu.compute(c1, c2, c3, c4, c5, c6, self.d_out, a_or_m_mux_out)
 
         self.jump_decoder_out = self.jump_decoder.compute(self.alu_out, j1,j2,j3)
-        self.load_pc = self.load_jump_mux.compute(x, 0, self.jump_decoder_out)
-        instr_dir = self.pc.compute(self.a_out, 1, self.load_pc, reset)
+        load_pc = self.load_jump_mux.compute(x, 0, self.jump_decoder_out)
+        # instr_dir = self.pc.compute(self.a_out, 1, self.load_pc, reset)
         d_load = self.load_d_mux.compute(x, 0, d2)
         self.d_out = self.d_register.compute(self.alu_out, d_load)
 
         mem_dir = self.a_out
 
-        return self.alu_out, instr_dir, mem_dir
+        # return self.alu_out, instr_dir, mem_dir
+        return self.alu_out, load_pc, mem_dir
