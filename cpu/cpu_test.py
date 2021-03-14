@@ -38,32 +38,9 @@ instructions = [
 # COMPROBAR TODAS LAS VARIABLES INTERNAS!!
 def test_cpu():
 
-    reset = 0
-
-    '''
-    instr = zero
-    mem_in = zero
-    reset = 0
-
-    assert cpu.a_register.value() == zero
-    assert cpu.d_register.value() == zero
-    assert cpu.pc.register.value() == zero
-    
-    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
-
-    assert cpu.load_pc == 0
-    assert cpu.a_register.value() == zero
-    assert cpu.d_register.value() == zero
-    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 1)
-    assert cpu.jump_decoder_out == 0
-    assert alu_out == zero
-    assert instr_dir == zero
-    assert mem_dir == zero
-    '''
-
-
     instr = instructions[0] # @i
     mem_in = zero
+    reset = 0
 
     alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
 
@@ -285,3 +262,97 @@ def test_cpu():
         assert cpu.alu_out == conversions.dec_to_bin_arr(n_bit, 0)
         assert instr_dir == conversions.dec_to_bin_arr(n_bit, 17)
         assert mem_dir == conversions.dec_to_bin_arr(n_bit, 4)
+
+    instr = instructions[4]  # @i
+    mem_in = conversions.dec_to_bin_arr(n_bit, 0)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.load_pc == 0
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 16)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 100)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 5)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 4)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 4)
+
+    instr = instructions[5]  # D = M
+    mem_in = conversions.dec_to_bin_arr(n_bit, 101)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.jump_decoder_out == 0
+    assert cpu.load_pc == 0
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 16)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 101)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 6)
+    assert alu_out == conversions.dec_to_bin_arr(n_bit, 101)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 5)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 16)
+
+    instr = instructions[6]  # @100
+    mem_in = conversions.dec_to_bin_arr(n_bit, 101)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.load_pc == 0
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 100)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 101)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 7)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 6)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 16)
+
+    instr = instructions[7]  # D = D-A
+    mem_in = conversions.dec_to_bin_arr(n_bit, 0)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.load_pc == 0
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 100)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 1)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 8)
+    assert alu_out == conversions.dec_to_bin_arr(n_bit, 1)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 7)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 100)
+
+    instr = instructions[8]  # @END
+    mem_in = conversions.dec_to_bin_arr(n_bit, 0)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.load_pc == 0
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 18)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 1)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 9)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 8)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 100)
+
+    instr = instructions[9]  # D;JGT
+    mem_in = conversions.dec_to_bin_arr(n_bit, 0)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.load_pc == 1
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 18)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 1)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 18)
+    assert cpu.alu_out == conversions.dec_to_bin_arr(n_bit, 1)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 9)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 18)
+
+    instr = instructions[18]  # @END
+    mem_in = conversions.dec_to_bin_arr(n_bit, 0)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.load_pc == 0
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 18)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 1)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 19)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 18)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 18)
+
+
+    instr = instructions[19]  # 0; JMP
+    mem_in = conversions.dec_to_bin_arr(n_bit, 0)
+    alu_out, instr_dir, mem_dir = cpu.compute(instr, mem_in, reset)
+
+    assert cpu.load_pc == 1
+    assert cpu.a_register.value() == conversions.dec_to_bin_arr(n_bit, 18)
+    assert cpu.d_register.value() == conversions.dec_to_bin_arr(n_bit, 1)
+    assert cpu.pc.register.value() == conversions.dec_to_bin_arr(n_bit, 18)
+    assert cpu.alu_out == conversions.dec_to_bin_arr(n_bit, 0)
+    assert instr_dir == conversions.dec_to_bin_arr(n_bit, 19)
+    assert mem_dir == conversions.dec_to_bin_arr(n_bit, 18)
