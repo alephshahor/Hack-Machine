@@ -31,7 +31,11 @@ assembly_program = [
 parser = Parser()
 
 def test_parser():
+
         in_ = ["@i", "(LOOP)", "M=1"]
         assert parser.command_type(in_[0]) == assembler_constants.A_COMMAND
         assert parser.command_type(in_[1]) == assembler_constants.L_COMMAND
         assert parser.command_type(in_[2]) == assembler_constants.C_COMMAND
+
+        assert parser.symbol(in_[0]) == "i"
+        assert parser.symbol(in_[1]) == "LOOP"
