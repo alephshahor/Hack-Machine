@@ -24,3 +24,8 @@ class Parser:
             return ''.join(command[1:])
         else:
             return ''.join(command[1:len(command)-1])
+
+    def dest(self, command):
+        command = list(command)
+        first_char = command[0]
+        return first_char
