@@ -44,3 +44,33 @@ def test_parser():
         assert parser.dest("M=1") == assembler_constants.M_DEST
         assert parser.dest("A=1") == assembler_constants.A_DEST
         assert parser.dest("D=1") == assembler_constants.D_DEST
+
+
+        assert parser.comp("M=1") == "1"
+        assert parser.comp("D=0") == "0"
+        assert parser.comp("A=-1") == "-1"
+        assert parser.comp("M=D") == "D"
+        assert parser.comp("M=A") == "A"
+        assert parser.comp("M=!D") == "!D"
+        assert parser.comp("M=!A") == "!A"
+        assert parser.comp("M=-D") == "-D"
+        assert parser.comp("M=-A") == "-A"
+        assert parser.comp("M=D+1") == "D+1"
+        assert parser.comp("M=A+1") == "A+1"
+        assert parser.comp("M=D-1") == "D-1"
+        assert parser.comp("M=A-1") == "A-1"
+        assert parser.comp("M=D+A") == "D+A"
+        assert parser.comp("M=D-A") == "D-A"
+        assert parser.comp("M=A-D") == "A-D"
+        assert parser.comp("M=D&A") == "D&A"
+        assert parser.comp("M=D|A") == "D|A"
+
+        assert parser.comp("A=M") == "M"
+        assert parser.comp("A=!M") == "!M"
+        assert parser.comp("A=M+1") == "M+1"
+        assert parser.comp("A=M-1") == "M-1"
+        assert parser.comp("A=D+M") == "D+M"
+        assert parser.comp("A=D-M") == "D-M"
+        assert parser.comp("A=M-D") == "M-D"
+        assert parser.comp("A=D&M") == "D&M"
+        assert parser.comp("A=D|M") == "D|M"

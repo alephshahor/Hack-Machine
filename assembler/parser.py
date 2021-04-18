@@ -37,3 +37,29 @@ class Parser:
 
         first_char = command[0]
         return first_char
+
+    def comp(self, command):
+        command = list(command)
+        has_dest = False
+
+        try:
+            has_dest = command.index('=')
+        except ValueError:
+            pass
+
+        has_jump = False
+        try:
+            has_jump = command.index(';')
+        except ValueError:
+            pass
+
+        if has_dest and has_jump:
+            raise Exception("Both jump and dest provided")
+
+        if has_dest:
+            return ''.join(command[2:])
+
+        if has_jump:
+            return ''.join(command[0])
+
+        raise Exception("No jump or dest provided.")
