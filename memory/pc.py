@@ -7,6 +7,7 @@ from add16bit import Add16Bit
 from register16bit import Register16Bit
 
 
+# TODO: This should be done with logic gates.
 class Pc:
 
     def __init__(self):
