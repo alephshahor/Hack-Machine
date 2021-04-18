@@ -40,6 +40,7 @@ def test_parser():
         assert parser.symbol(in_[0]) == "i"
         assert parser.symbol(in_[1]) == "LOOP"
 
+        assert parser.dest("D;JGT") == None
         assert parser.dest("M=1") == assembler_constants.M_DEST
         assert parser.dest("A=1") == assembler_constants.A_DEST
         assert parser.dest("D=1") == assembler_constants.D_DEST

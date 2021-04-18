@@ -27,5 +27,13 @@ class Parser:
 
     def dest(self, command):
         command = list(command)
+
+        try:
+            has_dest = command.index('=')
+            if has_dest is False:
+                return None
+        except ValueError:
+            return None
+
         first_char = command[0]
         return first_char
