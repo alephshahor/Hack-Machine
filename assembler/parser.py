@@ -26,13 +26,8 @@ class Parser:
             return ''.join(command[1:len(command)-1])
 
     def dest(self, command):
-        command = list(command)
-
-        try:
-            has_dest = command.index('=')
-            if has_dest is False:
-                return None
-        except ValueError:
+        has_dest = command.find("=")
+        if has_dest == -1:
             return None
 
         first_char = command[0]
@@ -63,3 +58,13 @@ class Parser:
             return ''.join(command[0])
 
         raise Exception("No jump or dest provided.")
+    
+    def jump(self, command):
+
+        has_jump = command.find(";")
+        if has_jump == -1:
+            return None
+
+        command = command.split(";")
+        return command[1]
+

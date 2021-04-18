@@ -74,3 +74,11 @@ def test_parser():
         assert parser.comp("A=M-D") == "M-D"
         assert parser.comp("A=D&M") == "D&M"
         assert parser.comp("A=D|M") == "D|M"
+
+        assert parser.jump("0;JGT") == assembler_constants.JUMP_GREATER
+        assert parser.jump("0;JEQ") == assembler_constants.JUMP_EQUAL
+        assert parser.jump("0;JGE") == assembler_constants.JUMP_GREATER_EQUAL
+        assert parser.jump("0;JLT") == assembler_constants.JUMP_LESS_THAN
+        assert parser.jump("0;JNE") == assembler_constants.JUMP_NOT_EQUAL
+        assert parser.jump("0;JLE") == assembler_constants.JUMP_LESS_EQUAL
+        assert parser.jump("0;JMP") == assembler_constants.JUMP_UNCONDITIONAL
